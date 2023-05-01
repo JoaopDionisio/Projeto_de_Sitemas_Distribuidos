@@ -1,0 +1,47 @@
+<form th:action="@{/saveEvent}" method="post">
+    <head>
+        <title>Event Registration</title>
+        <link rel="stylesheet" href="/team.css"/>
+        <meta charset="utf8"/>
+    </head>
+    <div="form-row">
+        <div>
+            <input type="hidden" th:field="*{event.id}">
+        </div>
+        <div>
+            <label>Username</label>
+            <input type="text" name="user" th:value="${event.user}">
+        </div>
+        <div>
+            <label>Color</label>
+            <input type="text" name="color" th:value="${event.color}">
+        </div>
+        <div>
+            <label>Players</label>
+            <select id="players" th:field="*{event.player}" size="10" multiple="multiple">
+                <option value="">null</option>
+				<option th:each="p : ${allPlayers}"
+						th:value="${{p}}"
+						th:text="${p.name}">
+					The name
+				</option>
+			</select>
+            <label>Games</label>
+            <select id="game" th:field="*{event.game}" size="10" multiple="multiple">
+				<option th:each="g : ${allGames}"
+                        th:value="${{g}}"
+						th:text="${g}">
+					The name
+				</option>
+			</select>
+            <label>Types</label>
+            <select id="type" th:field="*{event.type}" size="10" multiple="multiple">
+				<option value="Card">Card</option>
+                <option value="Resume">Resume</option>
+                <option value="Interruption">Interruption</option>
+                <option value="Goal">Goal</option>
+			</select>
+        </div>
+        <button type="submit">Register Event</button>
+    </div>
+</form>

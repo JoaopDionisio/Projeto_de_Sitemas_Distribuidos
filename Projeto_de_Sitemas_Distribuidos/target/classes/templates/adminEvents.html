@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <form th:action="@{/saveAdmEvents}" th:object="${event}" method="post">
+    <head>
+        <title>Validation of Events</title>
+        <link rel="stylesheet" href="/team.css"/>
+        <meta charset="utf8"/>
+    </head>
+    <body>
+        <h1>Validation of Events</h1>
+        <label>Eventos Inválidos no momento</label>
+        <input type="text" name="id" th:value="${id}">
+        <button type="submit">Register Valid Event</button>        
+        </tr>
+        <table class="table-fill">
+          <thead>
+            <tr>
+              <th class="text-left">Event Id</th>
+              <th class="text-left">Color</th>
+              <th class="text-left">Time</th>
+              <th class="text-left">Type</th>
+              <th class="text-left">Game Id</th>
+              <th class="text-left">Player Id</th>
+              <th class="text-left">User Id</th>
+            </tr>
+              </thead>
+              <tbody class="table-hover">
+          <tr th:each="ad : ${admEvents}">
+            <td class="text-left" th:text="${ad.id}">event id</td>
+            <td class="text-left" th:text="${ad.color}">color</td>
+            <td class="text-left" th:text="${ad.time}">time</td>  
+            <td class="text-left" th:text="${ad.type}">type</td>            
+            <td class="text-left" th:text="${ad.game.id}">game id</td>
+            <td class="text-left" th:text="${ad.player.name}">player id</td>
+            <td class="text-left" th:text="${ad.user.username}">user id</td>
+              </ul>
+            </td>
+          </tr>
+        </table>
+    </body>
+  </form>
+</html>
+
